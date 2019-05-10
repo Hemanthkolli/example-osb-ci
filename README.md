@@ -1,18 +1,26 @@
 # Example OSB CI/CD Pipeline
+
 This is an example CI/CD Pipeline to be used in combination with the [generic-osb-api](https://github.com/Meshcloud/generic-osb-api). It shows
-how the communication is done via a Git repo between the API and the pipeline. For the example, a VM is created in OpenStack with OpenStack
-and Cloud Foundry CLI installed. It enables you to easily spin up and get access to a VM that allows you to access your Cloud Platforms via CLI, without having to install the CLI tools locally on your PC.
+how the communication is done via a Git repo between the API and the pipeline.
+
+For each service instance created via the broker, the pipeline deploys an OpenStack VM with the CLI tools for OpenStack
+and Cloud Foundry installed. It enables you to easily spin up and get access to a VM that allows you to access your
+ Cloud Platforms via CLI, without having to install the CLI tools locally on your PC.
+
+![Concourse Pipeline Screenshot](pipeline.png)
 
 The pipeline is divided up into 3 different jobs:
 
-- Prepare: It prepares the instance. SSH keys are generated and all relevant information for a Terraform deployment and Ansible provisioning are extracted from the instance.yml and the environment and written to an instance.tfvars file.
-- Deploy: The provisioning of the service instance is done in this job. It uses the prepared SSH key and instance.tfvars file to actually create the service instance via Terraform and configure it via Ansible. The instances are running in OpenStack.
-- Bindings: Bindings are created in a separate step. Ansible is used to create a new user in the instance and the credentials are written back to the GIT repo. For production use, credentials should not be written to GIT, but something like Vault should be used for that. But for demo purposes, this approach is sufficient.
+- `prepare`: It prepares the instance. SSH keys are generated and all relevant information for a Terraform deployment and Ansible provisioning are extracted from the instance.yml and the environment and written to an instance.tfvars file.
+- `deploy`: The provisioning of the service instance is done in this job. It uses the prepared SSH key and instance.tfvars file to actually create the service instance via Terraform and configure it via Ansible. The instances are running in OpenStack.
+- `bindings`: Bindings are created in a separate step. Ansible is used to create a new user in the instance and the credentials are written back to the GIT repo. For production use, credentials should not be written to GIT, but something like Vault should be used for that. But for demo purposes, this approach is sufficient.
 
 ## Instances Git repository
+
 Via the instances repository the communication with the generic-osb-api is done. You can find details about the files to be exchanged in the [generic-osb-api Readme](https://github.com/Meshcloud/generic-osb-api).
 
 ## Configure pipeline
+
 To configure the pipeline for your environment, you have to create a yaml file, that contains all properties custom to an environment. The following properties have to be defined:
 
 ```yaml
