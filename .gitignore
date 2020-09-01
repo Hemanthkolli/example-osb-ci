@@ -1,4 +1,3 @@
 terraform/.terraform
-credentials*.yml
-configs*.yml
+credentials.yml
 *.tfstate.backup

@@ -47,8 +47,9 @@ main(){
       then
         flavor="$MEDIUM_FLAVOR"
       else
-        echo "plan $plan_id not found! Cannot execute pipeline!"
-        exit 404
+        echo "plan $plan_id not found! I am just doing nothing!"
+        ./$CI_ROOT/pipeline/scripts/update-status.sh "$dir" "succeeded" "just did nothing"
+        continue
       fi
 
       if [[ -e "$dir/instance.tfvars" ]]; then
