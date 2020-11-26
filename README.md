@@ -9,7 +9,7 @@ The pipeline is divided up into 3 different jobs:
 - Bindings: Bindings are created in a separate step. Ansible is used to create a new user in the instance and the credentials are written back to the GIT repo. For production use, credentials should not be written to GIT, but something like Vault should be used for that. But for demo purposes, this approach is sufficient.
 
 ## Instances Git repository
-Via the instances repository the communication with the UniPipe Service Broker is done. You can find details about the files to be exchanged in the [gUniPipe Service Broker Readme](https://github.com/meshcloud/unipipe-service-broker).
+Via the instances repository the communication with the UniPipe Service Broker is done. You can find details about the files to be exchanged in the [UniPipe Service Broker Readme](https://github.com/meshcloud/unipipe-service-broker).
 
 ## Configure pipeline
 To configure the pipeline for your environment, you have to create a yaml file, that contains all properties custom to an environment. The following properties have to be defined:
