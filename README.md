@@ -1,5 +1,5 @@
 # Example OSB CI/CD Pipeline
-This is an example CI/CD Pipeline to be used in combination with the [generic-osb-api](https://github.com/Meshcloud/generic-osb-api). It shows
+This is an example CI/CD Pipeline to be used in combination with the [UniPipe Service Broker](https://github.com/meshcloud/unipipe-service-broker). It shows
 how the communication is done via a Git repo between the API and the pipeline.
 
 The pipeline is divided up into 3 different jobs:
@@ -9,7 +9,7 @@ The pipeline is divided up into 3 different jobs:
 - Bindings: Bindings are created in a separate step. Ansible is used to create a new user in the instance and the credentials are written back to the GIT repo. For production use, credentials should not be written to GIT, but something like Vault should be used for that. But for demo purposes, this approach is sufficient.
 
 ## Instances Git repository
-Via the instances repository the communication with the generic-osb-api is done. You can find details about the files to be exchanged in the [generic-osb-api Readme](https://github.com/Meshcloud/generic-osb-api).
+Via the instances repository the communication with the UniPipe Service Broker is done. You can find details about the files to be exchanged in the [gUniPipe Service Broker Readme](https://github.com/meshcloud/unipipe-service-broker).
 
 ## Configure pipeline
 To configure the pipeline for your environment, you have to create a yaml file, that contains all properties custom to an environment. The following properties have to be defined:
@@ -26,7 +26,7 @@ private-key-ci-repo: # if you are using SSH to access your ci-repo, configure yo
     6lTMAGod+5pIv0hWk9Us24IjTthx8K5blAACy/HsXNOH1EKSXCoqoKTehRwdXUaD
     bOclJ/U3FqswV/hjnks789za98sANoojoijoisaj/EHysKQfmAnDBdG4=
     -----END RSA PRIVATE KEY-----
-instances-repo-uri: # url to git repo that is used for exchange of instance information with the generic-osb-api
+instances-repo-uri: # url to git repo that is used for exchange of instance information with the UniPipe Service Broker
 instances-repo-username: # if you need credentials for HTTPS access to your instances-repo, configure the username here
 instances-repo-password: # if you need credentials for HTTPS access to your instances-repo, configure the password here
 instances-repo-branch: master # if you are working with branches and want to use another branch, you can configure it here
