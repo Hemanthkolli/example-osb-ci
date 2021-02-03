@@ -35,7 +35,7 @@ jobs:
         with:
           repository:  Hemanthkolli/test-osb
           ssh-strict: false 
-          token:  ${{ secrets.GH_TEST_OSB }}
+          token:  ${{ secrets.GH_PAT_REPO_WF }}
       
 
 
