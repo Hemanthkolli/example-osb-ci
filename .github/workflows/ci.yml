@@ -34,7 +34,7 @@ jobs:
         uses: actions/checkout@master
         with:
           repository:  Hemanthkolli/test-osb
-          token:  ${{ secrets.GH_PAT_REPO_WF }}
+          token:  ${{ secrets.GH_TEST_OSB }}
       
 
 
